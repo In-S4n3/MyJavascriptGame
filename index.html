@@ -12,32 +12,47 @@
     <title>My JavaScript Game</title>
   </head>
   <body>
-
     <section id="game" style="display:none;">
       <div class="div">
         <canvas id="canvas" width="705" height="620"></canvas>
       </div>
     </section>
 
-    <section id="mainPage">
+    <section id="gameOver" style="display:none;">
+      <div>
+        <img src="./Images/game_over.png" alt="" />
+        <div>
+          <button id="restart" onclick="restart()">
+            Back to main screen
+          </button>
+        </div>
+      </div>
+    </section>
 
+    <section id="mainPage">
       <header id="title">
-        <h2> WELCOME TO: <br> My not So Awesome Javascript Game</h2>
+        <h2>
+          WELCOME TO: <br />
+          My not So Awesome Javascript Game
+        </h2>
       </header>
 
       <div id="instructions">
         <h3>Instructions:</h3>
-        <img src="./Images/left_right.png" alt="keyboard" width="150px">
-        <p>Use the left and right arrow as shown above to move the paddle. <br>
-       <br> As soon you kill all the aliens, more will come to make it more interesting for you.</p>
-       <h3>Have FUN! :)</h3>
-        <img src="./Images/alien.png" alt="Alien">
+        <img src="./Images/left_right.png" alt="keyboard" width="150px" />
+        <p>
+          Use the left and right arrow as shown above to move the paddle. <br />
+          <br />
+          As soon you kill all the aliens, more will come to make it more
+          interesting for you.
+        </p>
+        <h3>Have FUN! :)</h3>
+        <img src="./Images/alien.png" alt="Alien" />
       </div>
 
       <div class="button">
         <button id="buttonClick" onclick="startGame()">Start Game</button>
       </div>
-
     </section>
 
     <script src="game.js"></script>

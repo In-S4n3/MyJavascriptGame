@@ -53,3 +53,10 @@ padding-top: 25px;;
   background: red;
   padding: 10px 24px;
 }
+
+#restart {
+  border-radius: 8px;
+  color: white;
+  background: red;
+  padding: 10px 24px;
+}

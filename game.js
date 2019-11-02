@@ -1,5 +1,6 @@
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
+let gameOver = false;
 
 // IMAGES
 const alien8bit = new Image();
@@ -19,6 +20,8 @@ scoreImg.src = "./Images/score.png";
 
 const levelImg = new Image();
 levelImg.src = "./Images/level_up.png";
+
+
 
 // Paddle 
 const paddleWidth = 75;
@@ -106,8 +109,11 @@ function drawBall() {
     life--
     resetGame();
     if(life === 0) {
-      alert('Game Over');
       dead.play();
+      gameOver = true;
+      document.getElementById("gameOver").style.display = "block";
+      document.getElementById("game").style.display = "none";
+
     }
   }
 }
@@ -268,14 +274,23 @@ function draw() {
   // level
   showGameStats(level, canvas.width/2, 35, levelImg, canvas.width/2-40, 5);
 
+
+  if (!gameOver) {
+    requestAnimationFrame(draw);
+  }
   
-  requestAnimationFrame(draw);
   
 }
 
 function startGame() {
+  gameOver = false;
+  document.getElementById("gameOver").style.display = "none"; 
   document.getElementById("game").style.display = "block"; 
   document.getElementById("mainPage").style.display = "none"; 
 
-  draw()
+  draw();
+}
+
+function restart() {
+  window.location.reload();
 }
