@@ -35,7 +35,7 @@ body {
 
 #canvas {
   border: 2px solid #aae3be;
-  background-image: url('/Images/video-game-wallpaper.jpg');
+  background-image: url('./Images/video-game-wallpaper.jpg');
   background-size: contain;
   background-position: center;
 }
