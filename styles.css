@@ -1,0 +1,24 @@
+.div {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background: #338047;
+}
+
+#canvas {
+  border: 2px solid #aae3be;
+  background-image: url('/Images/video-game-wallpaper.jpg');
+  background-size: contain;
+  background-position: center;
+}
+
+#button {
+  margin-top: 10px;
+  display: block;
+  border-radius: 8px;
+  color: white;
+  background: red;
+  padding: 10px 24px;
+}
