@@ -15,6 +15,9 @@ const paddle = {
 
 // Drawing the Paddle
 
+const alien8bit = new Image();
+alien8bit.src = "./Images/alien.png"
+
 const rectangle = new Image();
 rectangle.src = "./Images/rectangle.png";
 
@@ -147,8 +150,7 @@ createAliens();
 
 // Drawing the aliens
 
-const alien8bit = new Image();
-alien8bit.src = "./Images/alien.png"
+
 
 function drawBricks() {
   for (let i = 0; i < alien.row; i++) {
