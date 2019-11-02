@@ -1,6 +1,32 @@
+* {
+  font-family: Germania One;
+  text-align: center;
+}
+
 .div {
   display: flex;
   justify-content: center;
+}
+
+#mainPage {
+  height: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#title {
+  color: #392a4a;
+  height: 100;
+  align-items: flex-start;
+  padding-top: 25px;
+}
+
+#instructions {
+  height: 450;
+  padding-top: 25px;
 }
 
 body {
@@ -14,9 +40,11 @@ body {
   background-position: center;
 }
 
-#button {
-  margin-top: 10px;
-  display: block;
+.button {
+  padding-top: 25px;
+}
+
+#buttonClick {
   border-radius: 8px;
   color: white;
   background: red;

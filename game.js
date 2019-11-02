@@ -117,70 +117,69 @@ function ballAgainstPaddle() {
   };
 }
 
-// Creating the bricks
-const brick = {
+// Creating the aliens
+const alien = {
   row: 1,
   column: 9,
-  width: 55,
-  height: 20,
-  offSetLeft: 20,
+  width: 45,
+  height: 35,
+  offSetLeft: 30,
   offSetTop: 20,
   marginTop: 50,
-  fillColor: "#d6c8e3",
-  strokeColor: "purple"
 };
 
-let bricks = [];
+let aliens = [];
 
-function createBricks() {
-  for (let r = 0; r < brick.row; r++) {
-    bricks[r] = [];
-    for (let c = 0; c < brick.column; c++) {
-      bricks[r][c] = {
-        x: c * (brick.offSetLeft + brick.width) + brick.offSetLeft,
-        y: r * (brick.offSetTop + brick.height) + brick.offSetTop + brick.marginTop,
+function createAliens() {
+  for (let i = 0; i < alien.row; i++) {
+    aliens[i] = [];
+    for (let j = 0; j < alien.column; j++) {
+      aliens[i][j] = {
+        x: j * (alien.offSetLeft + alien.width) + alien.offSetLeft,
+        y: i * (alien.offSetTop + alien.height) + alien.offSetTop + alien.marginTop,
         status: true
       };
     }
   }
 }
 
-createBricks();
+createAliens();
 
-// Drawing the bricks
+// Drawing the aliens
+
+const alien8bit = new Image();
+alien8bit.src = "/Images/alien.png"
+
 function drawBricks() {
-  for (let r = 0; r < brick.row; r++) {
-    for (let c = 0; c < brick.column; c++) {
-      let b = bricks[r][c];
-      // if the brick isn't broken
-      if (b.status == true) {
-        ctx.fillStyle = brick.fillColor;
-        ctx.fillRect(b.x, b.y, brick.width, brick.height);
+  for (let i = 0; i < alien.row; i++) {
+    for (let j = 0; j < alien.column; j++) {
+      let a = aliens[i][j];
+      // if the alien isn't dead
+      if (a.status == true) {
 
-        ctx.strokeStyle = brick.strokeColor;
-        ctx.strokeRect(b.x, b.y, brick.width, brick.height);
+        ctx.drawImage(alien8bit, a.x, a.y, alien.width, alien.height)
       }
     }
   }
 }
 
-// Ball against brick
+// Ball against alien
 function collisionDetection() {
-  for (let r = 0; r < brick.row; r++) {
-    for (let c = 0; c < brick.column; c++) {
-      let b = bricks[r][c];
-      // if the brick isn't broken
-      if (b.status == true) {
+  for (let i = 0; i < alien.row; i++) {
+    for (let j = 0; j < alien.column; j++) {
+      let a = aliens[i][j];
+      // if the alien isn't dead
+      if (a.status == true) {
         if (
-          ball.x + radius > b.x &&
-          ball.x - radius < b.x + brick.width &&
-          ball.y + radius > b.y &&
-          ball.y - radius < b.y + brick.height
+          ball.x + radius > a.x &&
+          ball.x - radius < a.x + alien.width &&
+          ball.y + radius > a.y &&
+          ball.y - radius < a.y + alien.height
         ) {
           vy = -vy;
-          b.status = false; // the brick is broken and disapears
+          a.status = false; // the alien is dead and disapears
           score++;
-          brickSounds.play();
+          alienSounds.play();
         }
       }
     }
@@ -215,15 +214,15 @@ function levelUp(){
   let levelComplete = true;
   
   // check if all the bricks are broken
-  for(let r = 0; r < brick.row; r++){
-      for(let c = 0; c < brick.column; c++){
-        levelComplete = levelComplete && ! bricks[r][c].status;
+  for(let i = 0; i < alien.row; i++){
+      for(let j = 0; j < alien.column; j++){
+        levelComplete = levelComplete && ! aliens[i][j].status;
       }
   }
   
   if(levelComplete){
-      brick.row++;
-      createBricks();
+      alien.row++;
+      createAliens();
       resetGame()
       vy+=1
       level++;
@@ -235,8 +234,8 @@ function levelUp(){
 const borderSounds = new Audio();
 borderSounds.src = 'Sounds/wall.mp3';
 
-const brickSounds = new Audio();
-brickSounds.src = 'Sounds/bricks.mp3';
+const alienSounds = new Audio();
+alienSounds.src = 'Sounds/bricks.mp3';
 
 const dead = new Audio();
 dead.src = 'Sounds/game_over.mp3'
@@ -272,5 +271,8 @@ function draw() {
 }
 
 function startGame() {
+  document.getElementById("game").style.display = "block"; 
+  document.getElementById("mainPage").style.display = "none"; 
+
   draw()
 }
