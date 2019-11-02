@@ -21,12 +21,15 @@
   color: #392a4a;
   height: 100;
   align-items: flex-start;
-  padding-top: 25px;
+  padding-top: 20px;
 }
 
 #instructions {
-  height: 450;
   padding-top: 25px;
+}
+
+p {
+  font-size: 20px;
 }
 
 body {
@@ -41,7 +44,7 @@ body {
 }
 
 .button {
-  padding-top: 25px;
+padding-top: 25px;;
 }
 
 #buttonClick {

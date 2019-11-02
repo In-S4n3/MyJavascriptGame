@@ -238,7 +238,7 @@ const borderSounds = new Audio();
 borderSounds.src = './Sounds/wall.mp3';
 
 const alienSounds = new Audio();
-alienSounds.src = './Sounds/bricks.mp3';
+alienSounds.src = './Sounds/boom.mp3';
 
 const dead = new Audio();
 dead.src = './Sounds/game_over.mp3'
