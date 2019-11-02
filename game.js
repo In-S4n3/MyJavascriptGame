@@ -16,7 +16,7 @@ const paddle = {
 // Drawing the Paddle
 
 const rectangle = new Image();
-rectangle.src = "Images/rectangle.png";
+rectangle.src = "./Images/rectangle.png";
 
 function drawPaddle() {
   ctx.beginPath();
@@ -66,7 +66,7 @@ const ball = {
 }
 
 const fireBall = new Image();
-fireBall.src = "Images/fireball.png";
+fireBall.src = "./Images/fireball.png";
 
 // Drawing the ball
 function drawBall() {
@@ -148,7 +148,7 @@ createAliens();
 // Drawing the aliens
 
 const alien8bit = new Image();
-alien8bit.src = "/Images/alien.png"
+alien8bit.src = "./Images/alien.png"
 
 function drawBricks() {
   for (let i = 0; i < alien.row; i++) {
@@ -189,13 +189,13 @@ function collisionDetection() {
 
 // Game variables
 const lifesImg = new Image();
-lifesImg.src = "Images/png-heart-clipart.png";
+lifesImg.src = "./Images/png-heart-clipart.png";
 
 const scoreImg = new Image();
-scoreImg.src = "Images/score.png";
+scoreImg.src = "./Images/score.png";
 
 const levelImg = new Image();
-levelImg.src = "Images/level_up.png";
+levelImg.src = "./Images/level_up.png";
 
 // Game Variables and Conditions 
 let life = 3;
@@ -232,19 +232,19 @@ function levelUp(){
 
 // Game Sounds
 const borderSounds = new Audio();
-borderSounds.src = 'Sounds/wall.mp3';
+borderSounds.src = './Sounds/wall.mp3';
 
 const alienSounds = new Audio();
-alienSounds.src = 'Sounds/bricks.mp3';
+alienSounds.src = './Sounds/bricks.mp3';
 
 const dead = new Audio();
-dead.src = 'Sounds/game_over.mp3'
+dead.src = './Sounds/game_over.mp3'
 
 const levelPassed = new Audio();
-levelPassed.src = 'Sounds/win.mp3'
+levelPassed.src = './Sounds/win.mp3'
 
 const paddleHit = new Audio();
-paddleHit.src = 'Sounds/paddle_hit.mp3'
+paddleHit.src = './Sounds/paddle_hit.mp3'
 
 
 // Draw in the the Canvas
