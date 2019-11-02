@@ -16,7 +16,7 @@ const paddle = {
 // Drawing the Paddle
 
 const rectangle = new Image();
-rectangle.src = "/Images/rectangle.png";
+rectangle.src = "Images/rectangle.png";
 
 function drawPaddle() {
   ctx.beginPath();
@@ -66,7 +66,7 @@ const ball = {
 }
 
 const fireBall = new Image();
-fireBall.src = "/Images/fireball.png";
+fireBall.src = "Images/fireball.png";
 
 // Drawing the ball
 function drawBall() {
@@ -189,13 +189,13 @@ function collisionDetection() {
 
 // Game variables
 const lifesImg = new Image();
-lifesImg.src = "/Images/png-heart-clipart.png";
+lifesImg.src = "Images/png-heart-clipart.png";
 
 const scoreImg = new Image();
-scoreImg.src = "/Images/score.png";
+scoreImg.src = "Images/score.png";
 
 const levelImg = new Image();
-levelImg.src = "/Images/level_up.png";
+levelImg.src = "Images/level_up.png";
 
 // Game Variables and Conditions 
 let life = 3;
