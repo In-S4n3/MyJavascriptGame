@@ -1,6 +1,25 @@
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 
+// IMAGES
+const alien8bit = new Image();
+alien8bit.src = "./Images/alien.png"
+
+const rectangle = new Image();
+rectangle.src = "./Images/rectangle.png";
+
+const fireBall = new Image();
+fireBall.src = "./Images/fireball.png";
+
+const lifesImg = new Image();
+lifesImg.src = "./Images/png-heart-clipart.png";
+
+const scoreImg = new Image();
+scoreImg.src = "./Images/score.png";
+
+const levelImg = new Image();
+levelImg.src = "./Images/level_up.png";
+
 // Paddle 
 const paddleWidth = 75;
 const paddleHeight = 15;
@@ -14,13 +33,6 @@ const paddle = {
 }
 
 // Drawing the Paddle
-
-const alien8bit = new Image();
-alien8bit.src = "./Images/alien.png"
-
-const rectangle = new Image();
-rectangle.src = "./Images/rectangle.png";
-
 function drawPaddle() {
   ctx.beginPath();
   ctx.fillStyle = '#8fabc2'
@@ -67,9 +79,6 @@ const ball = {
   x: canvas.width/2,
   y: canvas.height - paddlePaddingBottom - paddle.height - radius -5,
 }
-
-const fireBall = new Image();
-fireBall.src = "./Images/fireball.png";
 
 // Drawing the ball
 function drawBall() {
@@ -190,14 +199,6 @@ function collisionDetection() {
 
 
 // Game variables
-const lifesImg = new Image();
-lifesImg.src = "./Images/png-heart-clipart.png";
-
-const scoreImg = new Image();
-scoreImg.src = "./Images/score.png";
-
-const levelImg = new Image();
-levelImg.src = "./Images/level_up.png";
 
 // Game Variables and Conditions 
 let life = 3;
