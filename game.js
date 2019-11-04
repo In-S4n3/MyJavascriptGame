@@ -1,6 +1,5 @@
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
-let gameOver = false;
 
 // IMAGES
 const alien8bit = new Image();
@@ -20,6 +19,9 @@ scoreImg.src = "./Images/score.png";
 
 const levelImg = new Image();
 levelImg.src = "./Images/level_up.png";
+
+const scoreHigh = new Image();
+scoreHigh.src = "./Images/high-score-icon.png"
 
 
 
@@ -164,10 +166,7 @@ function createAliens() {
 createAliens();
 
 // Drawing the aliens
-
-
-
-function drawBricks() {
+function drawAliens() {
   for (let i = 0; i < alien.row; i++) {
     for (let j = 0; j < alien.column; j++) {
       let a = aliens[i][j];
@@ -196,6 +195,14 @@ function collisionDetection() {
           vy = -vy;
           a.status = false; // the alien is dead and disapears
           score++;
+          // check high score
+          if (score > highScore) {
+            highScore = score;
+            localStorage.setItem(saveScore, highScore)
+          }
+          if (score === 72) {
+            alert('YOU WIN!')
+          }
           alienSounds.play();
         }
       }
@@ -205,11 +212,22 @@ function collisionDetection() {
 
 
 // Game variables
+const saveScore = 'highPontuation';
 
 // Game Variables and Conditions 
 let life = 3;
 let level = 1;
 let score = 0;
+let highScore = localStorage.getItem(saveScore);
+let gameOver = false;
+
+// Save High Score
+let scoreStr = localStorage.getItem(saveScore);
+if(scoreStr === null) {
+  highScore = 0;
+} else {
+  highScore = parseInt(scoreStr);
+}
 
 function showGameStats(text, textX, textY, img, imgX, imgY) {
   ctx.font = "30px Germania One";
@@ -263,24 +281,25 @@ function draw() {
   movePaddle();
   drawBall();
   ballAgainstPaddle();
-  drawBricks();
+  drawAliens();
   collisionDetection();
   levelUp();
 
   // Score
   showGameStats(score, 50, 35, scoreImg, 5, 5);
+  // High Score
+  showGameStats(highScore, 165, 35, scoreHigh, 120, 5);
   // Life
   showGameStats(life, canvas.width-60, 35, lifesImg, canvas.width-45, 5);
   // level
-  showGameStats(level, canvas.width/2, 35, levelImg, canvas.width/2-40, 5);
+  showGameStats(level, canvas.width-165, 35, levelImg, canvas.width-145, 5);
 
 
   if (!gameOver) {
     requestAnimationFrame(draw);
   }
-  
-  
 }
+
 
 function startGame() {
   gameOver = false;
@@ -294,3 +313,14 @@ function startGame() {
 function restart() {
   window.location.reload();
 }
+
+// let enter = document.getElementById('buttonClick');
+// enter.addEventListener('keydown', function (e) {
+//   var key = e.which || e.keyCode
+//   if (key === 13) {
+//     document.getElementById('buttonClick').click();
+//   }
+// }, true)
+
+
+
