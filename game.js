@@ -201,7 +201,9 @@ function collisionDetection() {
             localStorage.setItem(saveScore, highScore)
           }
           if (score === 72) {
-            alert('YOU WIN!')
+            youWin = true;
+            document.getElementById("youWin").style.display = "block"; 
+            document.getElementById("game").style.display = "none"
           }
           alienSounds.play();
         }
@@ -220,6 +222,7 @@ let level = 1;
 let score = 0;
 let highScore = localStorage.getItem(saveScore);
 let gameOver = false;
+let youWin = false;
 
 // Save High Score
 let scoreStr = localStorage.getItem(saveScore);
@@ -295,7 +298,7 @@ function draw() {
   showGameStats(level, canvas.width-165, 35, levelImg, canvas.width-145, 5);
 
 
-  if (!gameOver) {
+  if (!gameOver || !youWin) {
     requestAnimationFrame(draw);
   }
 }
@@ -303,7 +306,9 @@ function draw() {
 
 function startGame() {
   gameOver = false;
-  document.getElementById("gameOver").style.display = "none"; 
+  youWin = false;
+  document.getElementById("gameOver").style.display = "none";
+  document.getElementById("youWin").style.display = "none"; 
   document.getElementById("game").style.display = "block"; 
   document.getElementById("mainPage").style.display = "none"; 
 
